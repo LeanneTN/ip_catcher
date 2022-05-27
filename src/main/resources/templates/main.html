@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ip catcher</title>
+    <style>
+        #deviceTable {
+            border:solid #add9c0; border-width:1px 0px 0px 1px;
+        }
+        table_border{
+            border:solid #444; border-width:0px 1px 1px 0px; padding:10px 0px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2>网络设备列表</h2>
+    <table>
+        <tr>
+            <th>序号</th>
+            <th>网络设备</th>
+            <th>设备描述</th>
+        </tr>
+        <tr th:each="device:${session.devicesList}" style="border:solid #444; border-width:0px 1px 1px 0px; padding:10px 0px">
+            <td th:text="${device.deviceIndex}" th:style="'border:solid #444; border-width:0px 1px 1px 0px; padding:10px 0px'"></td>
+            <td th:text="${device.deviceName}" th:style="'border:solid #444; border-width:0px 1px 1px 0px; padding:10px 0px'"></td>
+            <td th:text="${device.deviceDescn}" th:style="'border:solid #444; border-width:0px 1px 1px 0px; padding:10px 0px'"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
