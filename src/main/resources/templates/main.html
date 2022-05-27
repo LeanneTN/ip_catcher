@@ -10,12 +10,15 @@
         table_border{
             border:solid #444; border-width:0px 1px 1px 0px; padding:10px 0px;
         }
+        #div1{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-<div>
+<div id="div1">
     <h2>网络设备列表</h2>
-    <table>
+    <table align="center">
         <tr>
             <th>序号</th>
             <th>网络设备</th>
@@ -27,6 +30,12 @@
             <td th:text="${device.deviceDescn}" th:style="'border:solid #444; border-width:0px 1px 1px 0px; padding:10px 0px'"></td>
         </tr>
     </table>
+</div>
+
+<div>
+    <form>
+
+    </form>
 </div>
 
 </body>
