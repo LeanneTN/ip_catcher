@@ -136,6 +136,255 @@ public class IpPacket {
 
     public void arpSetter(Packet packet){
         ARPPacket arpPacket = (ARPPacket) packet;
+        hardWare+=arpPacket.hardtype;
+        arpPrototype+=arpPacket.prototype;
+        arpOperation+=arpPacket.operation;
+        String buf = "";
+        switch(arpPacket.operation) {
+            case 1:
+                buf+="ARP REQUEST ";
+                break;
+            case 2:
+                buf+="ARP REPLY ";
+                break;
+            case 3:
+                buf+="RARP REQUEST ";
+                break;
+            case 4:
+                buf+="RARP REPLY ";
+                break;
+            case 5:
+            case 6:
+            case 7:
+            default:
+                buf+="UNKNOWN ";
+                break;
+            case 8:
+                buf+="IDENTIFY REQUEST ";
+                break;
+            case 9:
+                buf+="IDENTIFY REPLY ";
+        }
+        arpHeader+=buf + arpPacket.getSenderHardwareAddress() + "(" + arpPacket.getSenderProtocolAddress() + ") -> " + arpPacket.getTargetHardwareAddress() + "(" + arpPacket.getTargetProtocolAddress() + ")";
+        arpSender+=arpPacket.getSenderHardwareAddress();
+        arpTarget+=arpPacket.getTargetHardwareAddress();
+        arpSenderIp+=arpPacket.getSenderProtocolAddress();
+        arpTargetIp+=arpPacket.getTargetProtocolAddress();
+    }
 
+    public int getPacketType() {
+        return packetType;
+    }
+
+    public String getEthernetFrame() {
+        return ethernetFrame;
+    }
+
+    public String getMacSource() {
+        return macSource;
+    }
+
+    public String getMaxDestination() {
+        return maxDestination;
+    }
+
+    public String getFrameType() {
+        return frameType;
+    }
+
+    public String getIpHeader() {
+        return ipHeader;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public String getSecStamp() {
+        return secStamp;
+    }
+
+    public String getUsecStamp() {
+        return usecStamp;
+    }
+
+    public String getIpSource() {
+        return ipSource;
+    }
+
+    public String getIpDestination() {
+        return ipDestination;
+    }
+
+    public String getProtocol() {
+        return protocol;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public String getHop() {
+        return hop;
+    }
+
+    public String getRF() {
+        return RF;
+    }
+
+    public String getDF() {
+        return DF;
+    }
+
+    public String getMF() {
+        return MF;
+    }
+
+    public String getOffset() {
+        return offset;
+    }
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public String getTcpHeader() {
+        return tcpHeader;
+    }
+
+    public String getTcpDF() {
+        return tcpDF;
+    }
+
+    public String getTcpMF() {
+        return tcpMF;
+    }
+
+    public String getTcpOffset() {
+        return tcpOffset;
+    }
+
+    public String getTcpIdentity() {
+        return tcpIdentity;
+    }
+
+    public String getTcpSourcePort() {
+        return tcpSourcePort;
+    }
+
+    public String getTcpDestinationPort() {
+        return tcpDestinationPort;
+    }
+
+    public String getSequence() {
+        return sequence;
+    }
+
+    public String getWindow() {
+        return window;
+    }
+
+    public String getAckFlag() {
+        return ackFlag;
+    }
+
+    public String getAck() {
+        return ack;
+    }
+
+    public String getTcpLength() {
+        return tcpLength;
+    }
+
+    public String getUdpHeader() {
+        return udpHeader;
+    }
+
+    public String getUdpDF() {
+        return udpDF;
+    }
+
+    public String getUdpMF() {
+        return udpMF;
+    }
+
+    public String getUdpOffset() {
+        return udpOffset;
+    }
+
+    public String getUdpIdentity() {
+        return udpIdentity;
+    }
+
+    public String getUdpSourcePort() {
+        return udpSourcePort;
+    }
+
+    public String getUdpDestinationPort() {
+        return udpDestinationPort;
+    }
+
+    public String getUdpLength() {
+        return udpLength;
+    }
+
+    public String getIcmpHeader() {
+        return icmpHeader;
+    }
+
+    public String getIcmpDF() {
+        return icmpDF;
+    }
+
+    public String getIcmpMF() {
+        return icmpMF;
+    }
+
+    public String getIcmpOffset() {
+        return icmpOffset;
+    }
+
+    public String getIcmpIdentity() {
+        return icmpIdentity;
+    }
+
+    public String getIcmpType() {
+        return icmpType;
+    }
+
+    public String getIcmpCode() {
+        return icmpCode;
+    }
+
+    public String getHardWare() {
+        return hardWare;
+    }
+
+    public String getArpPrototype() {
+        return arpPrototype;
+    }
+
+    public String getArpOperation() {
+        return arpOperation;
+    }
+
+    public String getArpHeader() {
+        return arpHeader;
+    }
+
+    public String getArpSender() {
+        return arpSender;
+    }
+
+    public String getArpTarget() {
+        return arpTarget;
+    }
+
+    public String getArpSenderIp() {
+        return arpSenderIp;
+    }
+
+    public String getArpTargetIp() {
+        return arpTargetIp;
     }
 }
