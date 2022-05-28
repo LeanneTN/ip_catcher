@@ -3,6 +3,9 @@ package com.example.ip_catcher_spring.domain;
 import jpcap.PacketReceiver;
 import jpcap.packet.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Receiver implements PacketReceiver {
     private static int packetCount = 0;
     private static int packetPacketCount = 0;
@@ -14,11 +17,13 @@ public class Receiver implements PacketReceiver {
     private static int elsePacketCount = 0;
     private static int tcpPacketLength = 0;
     private static int udpPacketLength = 0;
+    private static List<com.example.ip_catcher_spring.domain.IpPacket> ipPacketList = new ArrayList<>();
 
     @Override
     public void receivePacket(Packet packet) {
         packetCount++;
         // System.out.println(packet);// 直接将捕获的包输出,不做任何处理;
+        com.example.ip_catcher_spring.domain.IpPacket ipPac = new IpPacket();
 
         /* 数链层,显示数据包的帧头部,每一个数据包都有,都要解析 */
         // EthernetPacket类继承 DataPacket类;
@@ -27,6 +32,10 @@ public class Receiver implements PacketReceiver {
         System.out.println("源mac地址 : " + dataLink.getSourceAddress());// 源mac地址
         System.out.println("目的mac地址 : " + dataLink.getDestinationAddress());// 目的mac地址
         System.out.println("帧类型 : " + dataLink.frametype);// 帧类型
+
+        ipPac.commonSetter(packet);
+        ipPac.tcpSetter(packet);
+        ipPacketList.add(ipPac);
 
         /* 网络层,显示数据包的IP首部 */
         /* instanceof 关键字,左边是对象，右边是类，返回类型是Boolean类型。
@@ -142,6 +151,10 @@ public class Receiver implements PacketReceiver {
         System.out.println("|——*捕获到arp数据包的总数为：" + arpPacketCount);
         System.out.println("|——*捕获到其他数据包的总数为：" + elsePacketCount);
         System.out.println("----------------------------------------------------------------------");
+    }
+
+    public List<IpPacket> getPacket(){
+        return ipPacketList;
     }
 }
 
