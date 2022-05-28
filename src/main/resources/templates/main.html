@@ -10,13 +10,13 @@
         table_border{
             border:solid #444; border-width:0px 1px 1px 0px; padding:10px 0px;
         }
-        #div1{
+        .div1{
             text-align: center;
         }
     </style>
 </head>
 <body>
-<div id="div1">
+<div class="div1">
     <h2>网络设备列表</h2>
     <table align="center">
         <tr>
@@ -32,9 +32,37 @@
     </table>
 </div>
 
-<div>
-    <form>
-
+<div class="div1">
+    <form action="/info_update" method="post">
+        <table align="center">
+            <tr>
+                <td>网络设备选择</td>
+                <td><input type="text" name="device", id="device"></td>
+                <td>
+                    <select id="selected", name="selected">
+                        <option value="mix" selected>混杂模式</option>
+                        <option value="ipv4">仅IPv4</option>
+                        <option value="ipv6">仅IPv6</option>
+                        <option value="tcp">仅TCP</option>
+                        <option value="udp">仅UDP</option>
+                        <option value="ipv4_tcp">IPv4和TCP</option>
+                        <option value="ipv4_udp">IPv4和UDP</option>
+                        <option value="ipv6_tcp">IPv6和TCP</option>
+                        <option value="ipv6_udp">IPv6和UDP</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>抓包数：</td>
+                <td><input type="text" id="packagesNum" name="packagesNum"></td>
+            <tr>
+                <td>超时时间：</td>
+                <td><input type="text" id="tempTime" name="tempTime"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="info_submit" id="info_submit" value="开始捕获"></td>
+            </tr>
+        </table>
     </form>
 </div>
 
