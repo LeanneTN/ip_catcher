@@ -8,6 +8,8 @@ class IpCatcherSpringApplicationTests {
 
     @Test
     void contextLoads() {
+        String s = "a" + true;
+        System.out.println(s);
     }
 
 }

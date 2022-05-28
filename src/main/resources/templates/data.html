@@ -5,6 +5,10 @@
     <title>data display</title>
 </head>
 <body>
-
+<h2 align="center">数据展示页</h2>
+<p th:text="${session.msg}"></p>
+<table th:each="packet:${session.packets}">
+    <tr th:text="'以太帧首部 :'+${packet} "></tr>
+</table>
 </body>
 </html>
