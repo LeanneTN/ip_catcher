@@ -40,13 +40,15 @@ public class DevicesController {
         if(selected.equals("mix")){
             keyWord="";
         }else if(selected.equals("ipv4")){
-            keyWord="ipv4";
+            keyWord="ip";
         }else if(selected.equals("ipv6")){
-            keyWord="ipv6";
+            keyWord="ip";
         }else if(selected.equals("tcp")){
             keyWord="tcp";
         }else if(selected.equals("udp")){
             keyWord="udp";
+        }else if(selected.equals("arp")){
+            keyWord="arp";
         }else if(selected.equals("ipv4_tcp")){
             keyWord="ip and tcp";
             mode=false;

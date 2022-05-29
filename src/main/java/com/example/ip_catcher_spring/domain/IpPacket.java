@@ -76,6 +76,7 @@ public class IpPacket {
         macSource+= dataLinkPacket.getSourceAddress();
         maxDestination+= dataLinkPacket.getDestinationAddress();
         frameType+=Short.toString(dataLinkPacket.frametype);
+        packetType=0;
     }
 
     public void IpSetter(Packet packet){
@@ -93,6 +94,7 @@ public class IpPacket {
         MF+=ipPacket.more_frag;
         offset+=ipPacket.offset;
         identity+=ipPacket.ident;
+        packetType=1;
     }
 
     public void tcpSetter(Packet packet){
@@ -109,6 +111,7 @@ public class IpPacket {
         ackFlag += tcpPacket.ack;
         ack += tcpPacket.ack_num;
         tcpLength+=tcpPacket.length;
+        packetType=2;
     }
 
     public void udpSetter(Packet packet){
@@ -121,6 +124,7 @@ public class IpPacket {
         udpIdentity+=udpPacket.ident;
         udpSourcePort+=udpPacket.src_ip;
         udpDestinationPort+=udpPacket.dst_port;
+        packetType=3;
     }
 
     public void icmpSetter(Packet packet){
@@ -132,6 +136,7 @@ public class IpPacket {
         icmpIdentity+=icmpPacket.ident;
         icmpType+=icmpPacket.type;
         icmpCode+=icmpPacket.code;
+        packetType=4;
     }
 
     public void arpSetter(Packet packet){
@@ -170,6 +175,7 @@ public class IpPacket {
         arpTarget+=arpPacket.getTargetHardwareAddress();
         arpSenderIp+=arpPacket.getSenderProtocolAddress();
         arpTargetIp+=arpPacket.getTargetProtocolAddress();
+        packetType=5;
     }
 
     public int getPacketType() {

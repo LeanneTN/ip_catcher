@@ -22,8 +22,10 @@ public class IpService {
         JpcapCaptor jpcap = null;
         try{
             jpcap = JpcapCaptor.openDevice(devices[indexInt], 2000, mode, Integer.parseInt(tempTime));
-            //使用arp（地址解析协议）
-            jpcap.setFilter(keyword, true);
+            if(keyword.equals("")){
+                jpcap.setFilter("",true);
+            }else
+                jpcap.setFilter(keyword, true);
             Receiver receiver = new Receiver();
             jpcap.processPacket(Integer.parseInt(packageNum), receiver);
             arguments=receiver.getPacket();
@@ -33,7 +35,7 @@ public class IpService {
         int i = 0;
         while (i < Integer.parseInt(packageNum)) {
             Packet packet = jpcap.getPacket();
-            i++;// 捕获四个数据包
+            i++;// 捕获数据包
         }
         System.out.println(arguments.size());
         return arguments;

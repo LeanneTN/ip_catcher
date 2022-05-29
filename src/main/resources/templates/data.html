@@ -8,7 +8,61 @@
 <h2 align="center">数据展示页</h2>
 <p th:text="${session.msg}"></p>
 <table th:each="packet:${session.packets}">
-    <tr th:text="'以太帧首部 :'+${packet} "></tr>
+    <tr>
+        <td th:text="'=============================='"></td>
+    </tr>
+    <tr><td th:text="${packet.ethernetFrame} "></td></tr>
+    <tr><td th:text="${packet.macSource}"></td></tr>
+    <tr><td th:text="${packet.maxDestination}"></td></tr>
+    <tr><td th:text="${packet.frameType}"></td></tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.ipHeader}"></td></tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.version}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.secStamp}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.usecStamp}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.ipSource}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.ipDestination}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.protocol}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.priority}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.hop}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.RF}"></td></tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.DF}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.MF}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.offset}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 1}" th:text="${packet.identity}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.tcpHeader}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.DF}"></td></tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.MF}"></td> </tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.tcpOffset}"></td></tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.tcpIdentity}"></td></tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.tcpSourcePort}"></td></tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.sequence}"></td></tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.window}"></td></tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.ackFlag}"></td></tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.ack}"></td></tr>
+    <tr><td th:if="${packet.packetType == 2}" th:text="${packet.tcpLength}"></td></tr>
+    <tr><td th:if="${packet.packetType == 3}" th:text="${packet.udpHeader}"></td></tr>
+    <tr><td th:if="${packet.packetType == 3}" th:text="${packet.udpDF}"></td></tr>
+    <tr><td th:if="${packet.packetType == 3}" th:text="${packet.udpMF}"></td></tr>
+    <tr><td th:if="${packet.packetType == 3}" th:text="${packet.udpOffset}"></td></tr>
+    <tr><td th:if="${packet.packetType == 3}" th:text="${packet.udpSourcePort}"></td></tr>
+    <tr><td th:if="${packet.packetType == 3}" th:text="${packet.udpDestinationPort}"></td></tr>
+    <tr><td th:if="${packet.packetType == 3}" th:text="${packet.udpLength}"></td></tr>
+    <tr><td th:if="${packet.packetType == 4}" th:text="${packet.icmpHeader}"></td></tr>
+    <tr><td th:if="${packet.packetType == 4}" th:text="${packet.icmpDF}"></td></tr>
+    <tr><td th:if="${packet.packetType == 4}" th:text="${packet.icmpMF}"></td></tr>
+    <tr><td th:if="${packet.packetType == 4}" th:text="${packet.icmpOffset}"></td></tr>
+    <tr><td th:if="${packet.packetType == 4}" th:text="${packet.icmpIdentity}"></td></tr>
+    <tr><td th:if="${packet.packetType == 4}" th:text="${packet.icmpType}"></td></tr>
+    <tr><td th:if="${packet.packetType == 4}" th:text="${packet.icmpCode}"></td></tr>
+    <tr><td th:if="${packet.packetType == 5}" th:text="${packet.hardWare}"></td></tr>
+    <tr><td th:if="${packet.packetType == 5}" th:text="${packet.arpPrototype}"></td></tr>
+    <tr><td th:if="${packet.packetType == 5}" th:text="${packet.arpOperation}"></td></tr>
+    <tr><td th:if="${packet.packetType == 5}" th:text="${packet.arpHeader}"></td></tr>
+    <tr><td th:if="${packet.packetType == 5}" th:text="${packet.arpSender}"></td></tr>
+    <tr><td th:if="${packet.packetType == 5}" th:text="${packet.arpTarget}"></td></tr>
+    <tr><td th:if="${packet.packetType == 5}" th:text="${packet.arpSenderIp}"></td></tr>
+    <tr><td th:if="${packet.packetType == 5}" th:text="${packet.arpTargetIp}"></td></tr>
+
 </table>
 </body>
 </html>

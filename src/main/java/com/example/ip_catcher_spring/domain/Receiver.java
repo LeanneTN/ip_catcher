@@ -34,8 +34,8 @@ public class Receiver implements PacketReceiver {
         System.out.println("帧类型 : " + dataLink.frametype);// 帧类型
 
         ipPac.commonSetter(packet);
-        ipPac.tcpSetter(packet);
-        ipPacketList.add(ipPac);
+        //ipPac.tcpSetter(packet);
+        //ipPacketList.add(ipPac);
 
         /* 网络层,显示数据包的IP首部 */
         /* instanceof 关键字,左边是对象，右边是类，返回类型是Boolean类型。
@@ -49,6 +49,7 @@ public class Receiver implements PacketReceiver {
 
             } else if (packet.getClass().equals(IPPacket.class)) {
                 ipPacketCount++;
+                ipPac.IpSetter(packet);
                 // IP数据包, IPPacket类继承 Packet类,包括 IPV4和 IPV6;
                 IPPacket ipPacket = (IPPacket) packet;// 将 packet类转成 IPPacket类;
                 System.out.println("IP报文首部 : " + ipPacket.toString());
@@ -70,6 +71,7 @@ public class Receiver implements PacketReceiver {
                 /* 传输层,显示数据包的 ICMP/ TCP/ UDP 首部 */
             } else if (packet.getClass().equals(TCPPacket.class)) {
                 tcpPacketCount++;
+                ipPac.tcpSetter(packet);
                 // TCP数据报,TCPPacket类继承 IPPacket类;
                 TCPPacket tcpPacket = (TCPPacket) packet;// 将 TCPPacket类转成 IPPacket类;
                 tcpPacketLength += tcpPacket.len;// 计算TCP报文的总长度
@@ -90,6 +92,7 @@ public class Receiver implements PacketReceiver {
 
             } else if (packet.getClass().equals(UDPPacket.class)) {
                 udpPacketCount++;
+                ipPac.udpSetter(packet);
                 // UDP数据报,UDPPacket类继承 IPPacket类;
                 UDPPacket udpPacket = (UDPPacket) packet;
                 udpPacketLength += udpPacket.len;// 计算UDP报文的总长度
@@ -106,6 +109,7 @@ public class Receiver implements PacketReceiver {
 
             } else if (packet.getClass().equals(ICMPPacket.class)) {
                 icmpPacketCount++;
+                ipPac.icmpSetter(packet);
                 // ICMP数据报,ICMPPacket类继承 IPPacket类;
                 ICMPPacket icmpPacket = (ICMPPacket) packet;
                 System.out.println("ICMP报文首部：" + icmpPacket.toString());// 只包含报文类型和代码;
@@ -119,6 +123,7 @@ public class Receiver implements PacketReceiver {
                 /* 网络层,显示ARP数据包的首部 */
             } else if (packet.getClass().equals(ARPPacket.class)) {
                 arpPacketCount++;
+                ipPac.arpSetter(packet);
                 // ARP数据包,ARPPacket类继承 Packet类;
                 ARPPacket arpPacket = (ARPPacket) packet;// 将 packet类转成 ARPPacket类;
                 System.out.println("硬件类型hardtop : " + arpPacket.hardtype);
@@ -134,6 +139,7 @@ public class Receiver implements PacketReceiver {
                 elsePacketCount++;
                 System.out.println("协议类型 ：GGP、EGP、JGP协议或OSPF协议或ISO的第4类运输协议TP4");
             }
+            ipPacketList.add(ipPac);
 
         } else {
             System.out.println("未抓取到数据包!!");
