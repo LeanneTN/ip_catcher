@@ -70,6 +70,16 @@ public class IpPacket {
     private String arpTarget = "接收方硬件地址: ";
     private String arpSenderIp = "发送方IP地址: ";
     private String arpTargetIp = "接收方IP地址: ";
+    //current information
+    private String packetPortType = "数据报类型：";
+    private String currentPackages = "捕获到的数据包的总数为：";
+    private String currentPackets = "捕获到的packet数据包的总数为：";
+    private String currentIps = "捕获到ip数据包的总数为：";
+    private String currentTcps = "捕获到tcp数据包的总数为：";
+    private String currentUdps = "捕获到udp数据包的总数为：";
+    private String currentIcmps = "捕获到icmp数据包的总数为：";
+    private String currentArps = "捕获到arp数据包的总数为：";
+    private String currentOthers = "捕获到其他数据包的总数为：";
 
     public void commonSetter(Packet packet){
         EthernetPacket dataLinkPacket = (EthernetPacket) packet.datalink;
@@ -176,6 +186,62 @@ public class IpPacket {
         arpSenderIp+=arpPacket.getSenderProtocolAddress();
         arpTargetIp+=arpPacket.getTargetProtocolAddress();
         packetType=5;
+    }
+
+    public String getPacketPortType() {
+        return packetPortType;
+    }
+
+    public String getCurrentPackages() {
+        return currentPackages;
+    }
+
+    public String getCurrentPackets() {
+        return currentPackets;
+    }
+
+    public String getCurrentIps() {
+        return currentIps;
+    }
+
+    public String getCurrentTcps() {
+        return currentTcps;
+    }
+
+    public String getCurrentUdps() {
+        return currentUdps;
+    }
+
+    public String getCurrentIcmps() {
+        return currentIcmps;
+    }
+
+    public String getCurrentArps() {
+        return currentArps;
+    }
+
+    public String getCurrentOthers() {
+        return currentOthers;
+    }
+
+    public void setCurrentData(Packet packet,
+                               int packetCount,
+                               int packetPacketCount,
+                               int ipPacketCount,
+                               int tcp,
+                               int udp,
+                               int icmp,
+                               int arp,
+                               int others){
+        packetPortType += packet.getClass();
+        currentPackages += packetCount;
+        currentPackets += packetPacketCount;
+        currentIps += ipPacketCount;
+        currentTcps += tcp;
+        currentUdps += udp;
+        currentIcmps += icmp;
+        currentArps += arp;
+        currentOthers += others;
     }
 
     public int getPacketType() {

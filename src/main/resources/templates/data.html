@@ -62,7 +62,16 @@
     <tr><td th:if="${packet.packetType == 5}" th:text="${packet.arpTarget}"></td></tr>
     <tr><td th:if="${packet.packetType == 5}" th:text="${packet.arpSenderIp}"></td></tr>
     <tr><td th:if="${packet.packetType == 5}" th:text="${packet.arpTargetIp}"></td></tr>
-
+    <tr><td th:text="${packet.packetPortType}"></td> </tr>
+    <tr><td>当前数据如下：</td></tr>
+    <tr><td th:text="${packet.currentPackages}"></td></tr>
+    <tr><td th:text="${packet.currentPackets}"></td> </tr>
+    <tr><td th:text="${packet.currentIps}"></td> </tr>
+    <tr><td th:text="${packet.currentTcps}"></td> </tr>
+    <tr><td th:text="${packet.currentUdps}"></td> </tr>
+    <tr><td th:text="${packet.currentIcmps}"></td> </tr>
+    <tr><td th:text="${packet.currentArps}"></td> </tr>
+    <tr><td th:text="${packet.currentOthers}"></td> </tr>
 </table>
 </body>
 </html>

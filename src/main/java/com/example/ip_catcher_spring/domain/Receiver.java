@@ -139,6 +139,11 @@ public class Receiver implements PacketReceiver {
                 elsePacketCount++;
                 System.out.println("协议类型 ：GGP、EGP、JGP协议或OSPF协议或ISO的第4类运输协议TP4");
             }
+            ipPac.setCurrentData(packet,packetCount,
+                    packetPacketCount,packetCount,
+                    tcpPacketCount,udpPacketCount,
+                    icmpPacketCount,arpPacketCount,
+                    elsePacketCount);
             ipPacketList.add(ipPac);
 
         } else {
@@ -162,5 +167,6 @@ public class Receiver implements PacketReceiver {
     public List<IpPacket> getPacket(){
         return ipPacketList;
     }
+
 }
 
